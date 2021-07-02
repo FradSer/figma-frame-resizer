@@ -20,18 +20,28 @@ import {
   Dimensions,
   FormState,
   SelectionChangedHandler,
-  SetNodeSizeProps,
+  ResizeNodesProps,
   SubmitHandler
 } from '../utilities/types.js';
 
-export function SetNodeSize(props: SetNodeSizeProps): JSX.Element {
+export function ResizeNodes(props: ResizeNodesProps): JSX.Element {
   const { disabled, formState, handleSubmit, initialFocus, setFormState } =
     useForm<FormState>(props, {
       close: function () {
         emit<CloseUIHandler>('CLOSE_UI');
       },
-      submit: function ({ width, height, resizeWithConstraints }: FormState) {
-        emit<SubmitHandler>('SUBMIT', { height, resizeWithConstraints, width });
+      submit: function ({
+        resizeEdgeSize,
+        width,
+        height,
+        resizeWithConstraints
+      }: FormState) {
+        emit<SubmitHandler>('SUBMIT', {
+          resizeEdgeSize,
+          height,
+          resizeWithConstraints,
+          width
+        });
       },
       validate: function ({ width, height }: FormState) {
         return (
@@ -40,12 +50,17 @@ export function SetNodeSize(props: SetNodeSizeProps): JSX.Element {
         );
       }
     });
+
+  const [resizeEdgeSizeString, setResizeEdgeSize] = useState(
+    mapTextboxNumericValueToString(formState.resizeEdgeSize)
+  );
   const [widthString, setWidthString] = useState(
     mapTextboxNumericValueToString(formState.width)
   );
   const [heightString, setHeightString] = useState(
     mapTextboxNumericValueToString(formState.height)
   );
+
   useEffect(
     function () {
       return on<SelectionChangedHandler>(
@@ -58,52 +73,26 @@ export function SetNodeSize(props: SetNodeSizeProps): JSX.Element {
     },
     [setWidthString, setHeightString]
   );
-  const { width, height } = formState;
+  const { resizeEdgeSize, width, height } = formState;
   const hasSelection = width !== null && height !== null;
   return (
     <Container space="medium">
       <VerticalSpace space="large" />
+      <Text>Edge size increase by:</Text>
+      <VerticalSpace space="small" />
       <TextboxNumeric
         {...initialFocus}
         disabled={hasSelection === false}
         icon={<IconLayerFrame16 />}
         minimum={0}
-        name="width"
+        name="resizeEdgeSize"
         onNumericValueInput={setFormState}
-        onValueInput={setWidthString}
-        value={widthString}
+        onValueInput={setResizeEdgeSize}
+        value={resizeEdgeSizeString}
       />
-
-      <TextboxNumeric
-        disabled={hasSelection === false}
-        icon="W"
-        minimum={0}
-        name="width"
-        onNumericValueInput={setFormState}
-        onValueInput={setWidthString}
-        value={widthString}
-      />
-      <TextboxNumeric
-        disabled={hasSelection === false}
-        icon="H"
-        minimum={0}
-        name="height"
-        onNumericValueInput={setFormState}
-        onValueInput={setHeightString}
-        value={heightString}
-      />
-      <VerticalSpace space="medium" />
-      <Checkbox
-        disabled={hasSelection === false}
-        name="resizeWithConstraints"
-        onValueChange={setFormState}
-        value={formState.resizeWithConstraints === true}
-      >
-        <Text>Resize with constraints</Text>
-      </Checkbox>
       <VerticalSpace space="large" />
       <Button disabled={disabled === true} fullWidth onClick={handleSubmit}>
-        Set Layer Size
+        Resize Layer Size
       </Button>
       <VerticalSpace space="small" />
     </Container>

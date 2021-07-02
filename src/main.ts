@@ -6,12 +6,13 @@ import {
   loadSettingsAsync,
   once,
   saveSettingsAsync,
-  showUI
+  showUI,
+  getParentNode
 } from '@create-figma-plugin/utilities';
 
 import { computeDimensions } from './utilities/compute-dimensions.js';
 import { getValidSelectedNodes } from './utilities/get-valid-selected-nodes.js';
-import { setNodesSize } from './utilities/resize-nodes';
+import { resizeNodes } from './utilities/resize-nodes';
 import { defaultSettings, settingsKey } from './utilities/settings.js';
 import {
   CloseUIHandler,
@@ -36,9 +37,16 @@ export default async function (): Promise<void> {
   });
   once<SubmitHandler>(
     'SUBMIT',
-    async function ({ width, height, resizeWithConstraints }: FormState) {
+    async function ({
+      resizeEdgeSize,
+      width,
+      height,
+      resizeWithConstraints
+    }: FormState) {
       await saveSettingsAsync({ resizeWithConstraints }, settingsKey);
       if (
+        resizeEdgeSize === null ||
+        resizeEdgeSize === MIXED_NUMBER ||
         width === null ||
         width === MIXED_NUMBER ||
         height === null ||
@@ -48,10 +56,18 @@ export default async function (): Promise<void> {
         return;
       }
       const nodes = getValidSelectedNodes();
+
       for (const node of nodes) {
-        setNodesSize(node, { height, resizeWithConstraints, width });
+        resizeNodes(resizeEdgeSize, node, {
+          height,
+          resizeWithConstraints,
+          width
+        });
       }
-      figma.closePlugin(formatSuccessMessage('Set layer size'));
+
+      figma.closePlugin(
+        formatSuccessMessage(`Layer edge resized by ${resizeEdgeSize}px.`)
+      );
     }
   );
   figma.on('selectionchange', function () {
@@ -62,7 +78,7 @@ export default async function (): Promise<void> {
     );
   });
   showUI<FormState>(
-    { height: 141, width: 240 },
+    { height: 142, width: 240 },
     { ...settings, ...computeDimensions(nodes) }
   );
 }

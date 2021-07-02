@@ -6,11 +6,12 @@ export type Dimensions = {
 };
 
 export type Settings = {
+  resizeEdgeSize: null | number;
   resizeWithConstraints: boolean;
 };
 
-export type SetNodeSizeProps = Settings & Dimensions;
-export type FormState = SetNodeSizeProps;
+export type ResizeNodesProps = Settings & Dimensions;
+export type FormState = ResizeNodesProps;
 
 export interface CloseUIHandler extends EventHandler {
   name: 'CLOSE_UI';

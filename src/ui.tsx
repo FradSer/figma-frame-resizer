@@ -1,5 +1,5 @@
 import { render } from '@create-figma-plugin/ui';
 
-import { SetNodeSize } from './components/set-node-size';
+import { ResizeNodes } from './components/resize-nodes';
 
-export default render(SetNodeSize);
+export default render(ResizeNodes);

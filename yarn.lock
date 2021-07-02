@@ -87,11 +87,6 @@
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.25.0.tgz#38e0115982470ef684638285e64f9f893254e0c6"
   integrity sha512-F27ssLo7a2Je2TXYP5ovKzAKHmelP+q3M+ylqwz/sh/k+fPCKc5izHfZczcn6/m588QUCT3NiJlPTFjgan0LeQ==
 
-"@fradser/prettier-config@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@fradser/prettier-config/-/prettier-config-2.0.1.tgz#246a42ab38abff9cb55950d2bfb56a5f7716e769"
-  integrity sha512-a34OWaWEQjzgJy4A+lhcRi8dm3Laneopq+MujgE8VkLv8QeH3jkUXpvbokZATYKzl5ahOyHa0mgMs1LIXC93ng==
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -157,6 +152,11 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
+
+"@zestia/prettier-config@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@zestia/prettier-config/-/prettier-config-1.0.5.tgz#58a3ca614d6b94b2393286e5246be2212609541d"
+  integrity sha512-Ypakv4OZsdCEOcuj9+nYKMugYf13V2yNI3vhEh3ZgeNABEJAP91zZtWZEgQ8JYjtnNX+U+rFHI1Ojw9mSmyLrg==
 
 abbrev@1:
   version "1.1.1"
