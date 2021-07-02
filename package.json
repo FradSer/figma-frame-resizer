@@ -1,0 +1,51 @@
+{
+  "name": "figma-frame-resizer",
+  "version": "1.0.0",
+  "keywords": [
+    "create-figma-plugin",
+    "figma",
+    "figma-plugin"
+  ],
+  "license": "MIT",
+  "author": "Frad LEE",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@create-figma-plugin/ui": "^1.2.0-alpha.1",
+    "@create-figma-plugin/utilities": "^1.1.1",
+    "preact": "^10.5.13"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "^1.1.1",
+    "@create-figma-plugin/tsconfig": "^1.1.1",
+    "@figma/plugin-typings": "^1",
+    "@fradser/prettier-config": "^2.0.1",
+    "npm-watch": "^0.10.0",
+    "prettier": "^2.3.2",
+    "typescript": "^4",
+    "watch-figma": "^0.0.2"
+  },
+  "scripts": {
+    "build": "build-figma-plugin --typecheck --minify",
+    "dev": "build-figma-plugin --typecheck --watch",
+    "figma": "watch-figma",
+    "watch": "npm-watch"
+  },
+  "figma-plugin": {
+    "id": "figma-frame-resizer",
+    "name": "Frame Resizer",
+    "main": "src/main.ts",
+    "ui": "src/ui.tsx"
+  },
+  "watch": {
+    "figma": {
+      "patterns": "build",
+      "extensions": "*",
+      "quiet": true,
+      "runOnChangeOnly": false
+    }
+  },
+  "prettier": "@fradser/prettier-config"
+}
