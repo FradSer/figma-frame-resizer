@@ -1,13 +1,13 @@
-import { MIXED_NUMBER } from '@create-figma-plugin/ui';
 import {
   emit,
   formatErrorMessage,
   formatSuccessMessage,
+  getParentNode
   loadSettingsAsync,
+  MIXED_NUMBER,
   once,
   saveSettingsAsync,
   showUI,
-  getParentNode
 } from '@create-figma-plugin/utilities';
 
 import { computeDimensions } from './utilities/compute-dimensions.js';

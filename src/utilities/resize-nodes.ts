@@ -12,9 +12,13 @@ export function resizeNodes(
   const newHeight = node.height + resizeEdgeSize * 2;
 
   if (node.type === 'GROUP' || resizeWithConstraints === true) {
-    node.resize(newWidth, newHeight);
+    if ('resize' in node) {
+      node.resize(newWidth, newHeight);
+    }
   } else {
-    node.resizeWithoutConstraints(newWidth, newHeight);
+    if ('resizeWithoutConstraints' in node) {
+      node.resizeWithoutConstraints(newWidth, newHeight);
+    }
   }
 
   if ('children' in node) {
