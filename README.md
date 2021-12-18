@@ -1,6 +1,11 @@
-# figma-frame-resizer
+# Frame Resizer ![](https://img.shields.io/badge/A%20FRAD%20PRODUCT-v1.0.0-green) [![Twitter Follow](https://img.shields.io/twitter/follow/FradSer?style=social)](https://twitter.com/FradSer)
+
+Increase the spacing at the four edges of the frame, then center the original content.
+
+![Cover](https://user-images.githubusercontent.com/1439628/146648175-f932dd4d-1f6e-45a7-b79e-b9be43f5818e.png)
 
 ## Development guide
+
 
 _This plugin is built with [Create Figma Plugin](https://yuanqing.github.io/create-figma-plugin/)._
 
