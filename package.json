@@ -35,7 +35,7 @@
     "prettier": "prettier '**/*.{tx,tsx,json,css,scss,html,hbs,md}' --write"
   },
   "figma-plugin": {
-    "id": "figma-frame-resizer",
+    "id": "1054060403452308301",
     "name": "Frame Resizer",
     "main": "src/main.ts",
     "ui": "src/ui.tsx"
