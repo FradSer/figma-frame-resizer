@@ -2,7 +2,7 @@ import {
   emit,
   formatErrorMessage,
   formatSuccessMessage,
-  getParentNode
+  getParentNode,
   loadSettingsAsync,
   MIXED_NUMBER,
   once,

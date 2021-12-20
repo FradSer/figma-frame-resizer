@@ -3,7 +3,7 @@ import {
   Checkbox,
   Columns,
   Container,
-  IconLayerFrame16
+  IconLayerFrame16,
   mapTextboxNumericValueToString,
   Text,
   TextboxNumeric,
